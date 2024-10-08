@@ -3,6 +3,7 @@ services:
     container_name: transcoder-web
     image: ghcr.io/bob-park/transcoder-web
     build:
+      context: ./
       dockerfile: ./Dockerfile
       x-bake:
         platforms:

@@ -70,7 +70,7 @@ export default function AddJobModal({ open, onBackdrop }: AddJobModalProps) {
       type: jobType as JobType,
       source,
       dest,
-      options: options && JSON.parse(options),
+      options: options ? JSON.parse(options) : undefined,
     });
   };
 

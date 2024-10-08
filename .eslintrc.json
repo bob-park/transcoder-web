@@ -3,6 +3,7 @@
     "@bob-park/bobpark"
   ],
   "rules": {
+    "react/jsx-no-constructed-context-values": "off"
   },
   "ignorePatterns": ["*.config.ts", "*.config.mjs"]
 }

@@ -22,7 +22,9 @@ type ToastProviderProps = {
 
 export const ToastContext = createContext<ToastProviderContextState>({
   messages: [],
-  push: (message, level) => {},
+  push: (message, level) => {
+    console.log(message, level);
+  },
 });
 
 export default function ToastProvider({

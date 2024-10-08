@@ -6,7 +6,7 @@ export const createCounterSlice: SlicePattern<CounterState> = (set) => ({
     set(
       (state) => {
         return {
-          count: state.count++,
+          count: state.count + 1,
         };
       },
       false,
@@ -16,7 +16,7 @@ export const createCounterSlice: SlicePattern<CounterState> = (set) => ({
     set(
       (state) => {
         return {
-          count: state.count--,
+          count: state.count - 1,
         };
       },
       false,
