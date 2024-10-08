@@ -7,6 +7,7 @@ interface Job {
   status: JobStatus;
   source: string;
   dest: string;
+  progress: number;
   startDatetime?: Date;
   endDatetime?: Date;
   createdDate: Date;

@@ -10,7 +10,7 @@ export const useStore = create<BoundState>()(
       ...createCounterSlice(...a),
     })),
     {
-      name: 'bobworks-store',
+      name: 'bobs-transcoder',
       enabled: process.env.NODE_ENV !== 'production',
     },
   ),
