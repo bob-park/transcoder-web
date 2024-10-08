@@ -12,7 +12,7 @@ export async function getCurrentJob() {
   const { content } = result;
 
   if (content.length === 0) {
-    return null;
+    return;
   }
 
   return content[0];
