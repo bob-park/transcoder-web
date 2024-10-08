@@ -1,4 +1,4 @@
-import { getCurrentJob, retry, search } from '@/entries/job/api';
+import { createJob, getCurrentJob, retry, search } from '@/entries/job/api';
 
 import {
   InfiniteData,
@@ -8,6 +8,22 @@ import {
   useQuery,
   useQueryClient,
 } from '@tanstack/react-query';
+
+export function useAddJob(onSuccess?: () => void) {
+  const queryClient = useQueryClient();
+
+  const { mutate, isPending } = useMutation({
+    mutationKey: ['job', 'add'],
+    mutationFn: (request: CreateJobRequest) => createJob(request),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['job'] });
+
+      onSuccess && onSuccess();
+    },
+  });
+
+  return { addJob: mutate, isLoading: isPending };
+}
 
 export function useCurrentJob() {
   const { data, isPending } = useQuery<Job | null>({

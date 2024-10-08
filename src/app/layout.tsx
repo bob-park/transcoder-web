@@ -6,7 +6,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Bobs Transcoder',
+  title: "Bob's Transcoder",
   description: '이것은 Bob 이 만든 간단한 트랜스코딩 웹페이지이다.',
 };
 

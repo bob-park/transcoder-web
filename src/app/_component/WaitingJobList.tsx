@@ -41,6 +41,16 @@ export default function WaitingJobList() {
       <div className="card-body size-full">
         <h2 className="card-title">대기 중인 작업</h2>
 
+        {/* 총 대기 작업 수 */}
+        <div className="mt-2">
+          <div className="flex flex-row items-center gap-2">
+            <div className="w-32 flex-none">남은 대기 작업 수 :</div>
+            <div>
+              {(pages.length > 0 ? pages[0].total : 0).toLocaleString()}
+            </div>
+          </div>
+        </div>
+
         {/*  list  */}
         <div className="mt-8 h-[300px] overflow-auto">
           <table className="table table-xs">

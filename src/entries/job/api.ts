@@ -1,4 +1,14 @@
+import delay from '@/utils/common';
+
 import api from '@/entries';
+
+export async function createJob(body: CreateJobRequest) {
+  const result = await api.post('/api/job', { json: body }).json<Job>();
+
+  await delay(1_000);
+
+  return result;
+}
 
 export async function getCurrentJob() {
   const result = await api
