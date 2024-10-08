@@ -10,9 +10,10 @@ import {
 } from '@tanstack/react-query';
 
 export function useCurrentJob() {
-  const { data, isPending } = useQuery<Job | undefined>({
+  const { data, isPending } = useQuery<Job | null>({
     queryKey: ['job', 'current'],
     queryFn: () => getCurrentJob(),
+    refetchInterval: 1_000,
   });
 
   return { currentJob: data, isLoading: isPending };

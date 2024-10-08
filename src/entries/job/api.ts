@@ -4,7 +4,7 @@ export async function getCurrentJob() {
   const result = await api
     .get('/api/job/search', {
       searchParams: {
-        statues: 'PROCEEDING',
+        statuses: 'PROCEEDING',
       },
     })
     .json<Page<Job>>();
@@ -12,7 +12,7 @@ export async function getCurrentJob() {
   const { content } = result;
 
   if (content.length === 0) {
-    return;
+    return null;
   }
 
   return content[0];

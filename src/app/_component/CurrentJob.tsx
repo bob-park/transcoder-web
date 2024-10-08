@@ -2,9 +2,22 @@
 
 import { useCurrentJob } from '@/hooks/job';
 
+function parseType(type: JobType) {
+  switch (type) {
+    case 'COPY':
+      return '복사';
+
+    case 'TRANSCODE':
+      return '트랜스코딩';
+
+    default:
+      return type;
+  }
+}
+
 export default function CurrentJob() {
   // query
-  const { currentJob, isLoading } = useCurrentJob();
+  const { currentJob } = useCurrentJob();
 
   return (
     <div className="card min-h-[300px] w-full bg-base-100 shadow-xl">
@@ -12,26 +25,21 @@ export default function CurrentJob() {
         <h2 className="card-title">실행중인 작업</h2>
 
         {/* No Job */}
-        {!currentJob && !isLoading && (
+        {!currentJob && (
           <div className="my-auto flex flex-row items-center justify-center">
             <div className="text-4xl font-bold text-gray-500">No Job</div>
           </div>
         )}
 
-        {/* Loading */}
-        {!currentJob && isLoading && (
-          <div className="my-auto flex flex-row items-center justify-center">
-            <span className="loading loading-infinity loading-lg"></span>
-          </div>
-        )}
-
         {/* job info */}
-        {!!currentJob && !isLoading && (
+        {currentJob && (
           <div className="mt-10 flex flex-col gap-5">
             {/* 작업 종류 */}
             <div className="flex flex-row gap-2">
               <div className="w-24 flex-none text-right">작업 종류 :</div>
-              <div className="flex-1 text-left">{currentJob.jobType}</div>
+              <div className="flex-1 text-left">
+                {parseType(currentJob.jobType)}
+              </div>
             </div>
 
             {/* 원본 경로 */}
