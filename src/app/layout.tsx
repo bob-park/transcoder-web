@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className="">
         <ToastProvider limit={5} timeout={5}>
           <RQProvider>
-            <div className="size-full p-5">
+            <div className="size-full min-w-[650px] p-5">
               {/* nav bar */}
               <div className="w-full">
                 <Navbar />
