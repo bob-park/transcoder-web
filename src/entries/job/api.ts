@@ -18,11 +18,12 @@ export async function getCurrentJob() {
   return content[0];
 }
 
-export async function search(statuses: string[]) {
+export async function search(statuses: string[], sort: string) {
   return api
     .get('/api/job/search', {
       searchParams: {
         statuses: statuses.join(','),
+        sort,
       },
     })
     .json<Page<Job>>();

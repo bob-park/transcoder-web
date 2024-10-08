@@ -2,6 +2,8 @@
 
 import { useCurrentJob } from '@/hooks/job';
 
+import dayjs from 'dayjs';
+
 function parseType(type: JobType) {
   switch (type) {
     case 'COPY':
@@ -20,7 +22,7 @@ export default function CurrentJob() {
   const { currentJob } = useCurrentJob();
 
   return (
-    <div className="card min-h-[300px] w-full bg-base-100 shadow-xl">
+    <div className="card min-h-[384px] w-full bg-base-100 shadow-xl">
       <div className="card-body size-full">
         <h2 className="card-title">실행중인 작업</h2>
 
@@ -34,6 +36,12 @@ export default function CurrentJob() {
         {/* job info */}
         {currentJob && (
           <div className="mt-10 flex flex-col gap-5">
+            {/* 작업 아이디 */}
+            <div className="flex flex-row gap-2">
+              <div className="w-24 flex-none text-right">작업 아이디 :</div>
+              <div className="flex-1 text-left">{currentJob.id}</div>
+            </div>
+
             {/* 작업 종류 */}
             <div className="flex flex-row gap-2">
               <div className="w-24 flex-none text-right">작업 종류 :</div>
@@ -52,6 +60,14 @@ export default function CurrentJob() {
             <div className="flex flex-row gap-2">
               <div className="w-24 flex-none text-right">대상 경로 :</div>
               <div className="flex-1 text-left">{currentJob.dest}</div>
+            </div>
+
+            {/* 생성일 */}
+            <div className="flex flex-row gap-2">
+              <div className="w-24 flex-none text-right">생성일 :</div>
+              <div className="flex-1 text-left">
+                {dayjs(currentJob.createdDate).format('YYYY-MM-DD HH:mm:ss')}
+              </div>
             </div>
 
             {/* progress bar */}

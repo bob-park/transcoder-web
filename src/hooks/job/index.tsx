@@ -28,7 +28,7 @@ export function useSearchJob(statuses: string[]) {
     PageParams
   >({
     queryKey: ['job', 'search'],
-    queryFn: () => search(statuses),
+    queryFn: () => search(statuses, 'createdDate,asc'),
     initialPageParam: {
       size: 25,
       page: 0,
@@ -48,6 +48,7 @@ export function useSearchJob(statuses: string[]) {
         page: page.page + 1 > totalPage ? totalPage : nextPage,
       };
     },
+    refetchInterval: 1_000,
   });
 
   return {
