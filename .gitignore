@@ -38,3 +38,6 @@ next-env.d.ts
 ## project
 .npmrc
 *.idea
+.yarnrc*
+.pnp*
+.yarn
